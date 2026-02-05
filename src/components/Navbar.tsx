@@ -1,23 +1,31 @@
 import { Link } from "react-router-dom";
+import { useFavorites } from "../hooks/useFavorites";
 
 const Navbar = () => {
-    return (
-        <nav className="border-b-4 border-black bg-white p-6 flex flex-col md:flex-row justify-between items-center relative z-20">
+    const { favorites } = useFavorites();
 
-            {/* Logo : Un gros bloc noir avec texte blanc */}
-            <Link to="/" className="text-4xl font-black uppercase tracking-tighter bg-black text-white px-4 py-2 transform -rotate-2 hover:rotate-0 transition-transform duration-300 shadow-[4px_4px_0px_0px_rgba(255,200,0,1)]">
-                Shadow<span className="text-yellow-400">Picker</span>
+    return (
+        <nav className="w-full bg-[#020617] border-b border-white/10 py-6 px-4 md:px-12 flex justify-between items-center sticky top-0 z-50 backdrop-blur-md bg-opacity-80">
+            {/* LOGO */}
+            <Link to="/" className="group relative">
+                <div className="absolute inset-0 bg-yellow-400 translate-x-1 translate-y-1 transition-transform group-hover:translate-x-0 group-hover:translate-y-0"></div>
+                <div className="relative bg-black border-2 border-yellow-400 px-2 py-1">
+                    <h1 className="text-2xl font-black italic text-white tracking-tighter uppercase">
+                        Shadow<span className="text-yellow-400">Picker</span>
+                    </h1>
+                </div>
             </Link>
 
-            {/* Liens : Des boutons rectangles */}
-            <div className="flex gap-4 mt-4 md:mt-0 font-bold">
-                <Link to="/" className="px-4 py-2 border-2 border-transparent hover:border-black hover:bg-purple-200 transition-all">
-                    ACCUEIL
-                </Link>
-                <Link to="/favorites" className="px-4 py-2 border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all active:translate-x-[4px] active:translate-y-[4px] active:shadow-none flex items-center gap-2">
-                    FAVORIS ❤️
-                </Link>
-            </div>
+            {/* FAVORIS BUTTON */}
+            <Link to="/favorites" className="relative group">
+                <div className="absolute inset-0 bg-red-500 rounded-lg translate-x-1 translate-y-1 transition-transform group-hover:translate-x-0 group-hover:translate-y-0"></div>
+                <button className="relative bg-black border-2 border-red-500 text-white font-bold px-6 py-2 rounded-lg uppercase tracking-wider flex items-center gap-2">
+                    Favoris <span className="text-red-500">♥</span>
+                    <span className="bg-red-500 text-black text-xs px-2 py-0.5 rounded-full">
+                        {favorites.length}
+                    </span>
+                </button>
+            </Link>
         </nav>
     );
 };

@@ -1,35 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;700&display=swap');
+
 @import "tailwindcss";
 
-:root {
-    font-family: 'Space Grotesk', sans-serif;
-    /* Une couleur "Blanc Cassé" ou "Jaune pâle" pour faire papier */
-    background-color: #fff1f2; /* Rose très pâle, tu peux changer en #fefce8 (jaune) */
-    color: black;
-}
-
-/* Le motif "Papier à pois" pour donner de la texture */
+/* CONFIGURATION DARK MODE */
 body {
-    background-image: radial-gradient(#000 1px, transparent 1px);
-    background-size: 20px 20px; /* Taille des pois */
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #020617; /* Slate 950 (Très sombre) */
+    color: #ffffff; /* Texte blanc par défaut */
+    overflow-x: hidden;
 }
 
-/* Scrollbar Brutaliste */
+h1, h2, h3, .font-black {
+    font-family: 'Archivo Black', sans-serif;
+    letter-spacing: -0.03em;
+}
+
+/* LE MOTIF "DARK GRID" */
+.bg-grid {
+    /* Taille des carreaux */
+    background-size: 40px 40px;
+    /* Lignes très subtiles (5% d'opacité) */
+    background-image:
+            linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+
+
+}
+
+/* Scrollbar personnalisée (plus jolie sur fond sombre) */
 ::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
+    height: 8px;
 }
 ::-webkit-scrollbar-track {
-    background: white;
-    border-left: 2px solid black;
+    background: #020617;
 }
 ::-webkit-scrollbar-thumb {
-    background: #fbbf24; /* Jaune */
-    border: 2px solid black;
+    background: #334155;
+    border-radius: 4px;
 }
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-.animate-marquee {
-    animation: marquee 20s linear infinite;
+::-webkit-scrollbar-thumb:hover {
+    background: #475569;
 }
